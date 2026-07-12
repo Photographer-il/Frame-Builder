@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff8f3" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="referrer" content="no-referrer" />
+    <title>בוחרים מסגרת למגנט</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow"><span></span>בחירת מסגרת אונליין</div>
+        <h1>בואו נמצא את<br /><em>המסגרת שלכם</em></h1>
+        <p>בחרו מסגרת, ראו איך היא נראית על התמונה<br class="desktop-only" /> ושלחו לנו את הבחירה שאהבתם.</p>
+        <a class="hero-cta" href="#builder">מתחילים לבחור <span>←</span></a>
+        <div class="hero-doodle" aria-hidden="true">⌁</div>
+      </section>
+
+      <section class="builder" id="builder" aria-labelledby="builder-title">
+        <div class="chooser-layout">
+          <div class="preview-column">
+          <div class="preview-toolbar column-toolbar">
+            <h2 id="builder-title">איך המסגרת נראית?</h2>
+          </div>
+          <div class="preview-card">
+          <div class="preview-stage" id="preview-stage">
+              <img id="preview-photo" class="preview-photo" src="assets/demo-bat-mitzvah-wide.webp" alt="תצוגה מקדימה של התמונה" draggable="false" />
+            <img id="preview-frame" class="preview-frame" src="assets/frames/frame-001.png" alt="המסגרת שנבחרה" />
+            <div class="preview-loading" id="preview-loading" aria-hidden="true"></div>
+          </div>
+          <div class="preview-footer">
+            <div>
+              <span class="selected-label">המסגרת שנבחרה</span>
+              <strong id="selected-name">מסגרת מומלצת לבת מצווה 001</strong>
+            </div>
+          </div>
+          </div>
+          <div class="category-groups">
+            <section class="category-group" aria-labelledby="recommended-title">
+              <h3 id="recommended-title">מסגרות מומלצות</h3>
+              <nav class="category-tabs" aria-label="קטגוריות מסגרות מומלצות">
+                <button class="category-tab active" type="button" data-category="recommended-bat-mitzvah" aria-current="page">מסגרות מומלצות לבת מצווה</button>
+                <button class="category-tab" type="button" data-category="recommended-bar-mitzvah">מסגרות מומלצות לבר מצווה</button>
+              </nav>
+            </section>
+            <section class="category-group" aria-labelledby="all-frames-title">
+              <h3 id="all-frames-title">מסגרות למגנטים</h3>
+              <nav class="category-tabs" aria-label="כל קטגוריות המסגרות">
+                <button class="category-tab" type="button" data-category="bat-mitzvah">בת מצווה</button>
+                <button class="category-tab" type="button" data-category="bar-mitzvah">בר מצווה</button>
+                <button class="category-tab" type="button" data-category="wedding">חתונה</button>
+                <button class="category-tab" type="button" data-category="birthday">ימי הולדת</button>
+                <button class="category-tab" type="button" data-category="henna">חינה</button>
+                <button class="category-tab" type="button" data-category="brit">ברית / בריתה</button>
+              </nav>
+            </section>
+          </div>
+          </div>
+
+          <div class="selection-column">
+          <div class="selection-toolbar column-toolbar">
+          <div class="gallery-heading">
+          <div>
+            <h2>בחרו את המסגרת</h2>
+          </div>
+          <span class="gallery-count" id="gallery-count">41 עיצובים לבחירה</span>
+        </div>
+          </div>
+          <section class="selection-panel" aria-label="בחירת מסגרת">
+          <div class="selection-scroll">
+        <div class="frames-grid" id="frames-grid" aria-label="רשימת מסגרות"></div>
+        <button class="show-more" id="show-more" type="button">הצגת כל המסגרות <span>↓</span></button>
+          </div>
+          </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
