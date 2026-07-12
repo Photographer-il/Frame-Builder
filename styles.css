@@ -109,7 +109,9 @@ h2 { font-size: clamp(28px, 3vw, 40px); letter-spacing: -1.3px; line-height: 1.1
   .builder-heading { align-items: flex-start; flex-direction: column; }
   .preview-card { border-radius: 0; padding: 0; }
   .preview-stage { border-radius: 12px; }
-  .preview-footer { padding-inline: 7px; }
+  .preview-footer { padding: 5px 7px 3px; min-height: 28px; }
+  .preview-footer .selected-label { display: none; }
+  .preview-footer strong { font-size: 14px; line-height: 1.25; font-weight: 400; }
   .preview-card { box-shadow: 0 10px 18px rgba(37,32,30,.12); }
   .gallery-heading { margin-top: 0; align-items: flex-start; }
   .gallery-count { display: none; }
