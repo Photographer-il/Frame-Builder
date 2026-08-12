@@ -25,6 +25,18 @@ const previewCard = document.querySelector('.preview-card');
 const previewColumn = document.querySelector('.preview-column');
 const categoryGroups = document.querySelector('.category-groups');
 const selectionPanel = document.querySelector('.selection-panel');
+const confirmFrameButton = document.querySelector('#confirm-frame');
+const orderDialog = document.querySelector('#order-dialog');
+const orderForm = document.querySelector('#order-form');
+const orderSelection = document.querySelector('#order-selection');
+const customerName = document.querySelector('#customer-name');
+const magnetText = document.querySelector('#magnet-text');
+const hebrewDate = document.querySelector('#hebrew-date');
+const gregorianDate = document.querySelector('#gregorian-date');
+const formError = document.querySelector('#form-error');
+const dialogClose = document.querySelector('#dialog-close');
+const sendWhatsapp = document.querySelector('#send-whatsapp');
+const sendEmail = document.querySelector('#send-email');
 
 let activeCategory = 'recommended-bat-mitzvah';
 let selectedFrame = 1;
@@ -85,6 +97,63 @@ function showToast(message) {
   clearTimeout(showToast.timer);
   showToast.timer = setTimeout(() => toast.classList.remove('visible'), 1700);
 }
+
+function selectedFrameDetails() {
+  return frameTitle(selectedFrame);
+}
+
+function buildOrderMessage() {
+  const name = customerName.value.trim();
+  const inscription = magnetText.value.trim();
+  if (!name) {
+    formError.textContent = 'יש לכתוב את שם המזמין.';
+    customerName.focus();
+    return null;
+  }
+  if (!inscription) {
+    formError.textContent = 'יש לכתוב מה תרצו שיופיע על המגנט.';
+    magnetText.focus();
+    return null;
+  }
+
+  formError.textContent = '';
+  const dates = [];
+  if (hebrewDate.checked) dates.push('תאריך עברי');
+  if (gregorianDate.checked) dates.push('תאריך לועזי');
+
+  return [
+    `שם המזמין: ${name}`,
+    `מסגרת: ${selectedFrameDetails()}`,
+    `כיתוב: ${inscription}`,
+    `תוספות: ${dates.length ? dates.join(', ') : 'ללא'}`,
+  ].join('\n');
+}
+
+confirmFrameButton.addEventListener('click', () => {
+  orderSelection.textContent = `המסגרת שבחרתם: ${selectedFrameDetails()}`;
+  formError.textContent = '';
+  orderDialog.showModal();
+  window.setTimeout(() => customerName.focus(), 50);
+});
+
+dialogClose.addEventListener('click', () => orderDialog.close());
+orderDialog.addEventListener('click', (event) => {
+  if (event.target === orderDialog) orderDialog.close();
+});
+orderForm.addEventListener('submit', (event) => event.preventDefault());
+
+sendWhatsapp.addEventListener('click', () => {
+  const message = buildOrderMessage();
+  if (!message) return;
+  window.open(`https://wa.me/972533752060?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+});
+
+sendEmail.addEventListener('click', () => {
+  const message = buildOrderMessage();
+  if (!message) return;
+  const subject = `בחירת מסגרת למגנט - ${selectedFrameDetails()}`;
+  window.location.href = `mailto:adk.photographers@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+});
 
 function clampPhotoPosition() {
   const stageRect = previewStage.getBoundingClientRect();

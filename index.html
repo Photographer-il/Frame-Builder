@@ -41,6 +41,7 @@
               <span class="selected-label">המסגרת שנבחרה</span>
               <strong id="selected-name">מסגרת מומלצת לבת מצווה 001</strong>
             </div>
+            <button class="confirm-frame-button" id="confirm-frame" type="button">בחרתי את המסגרת</button>
           </div>
           </div>
           <div class="category-groups">
@@ -84,6 +85,33 @@
         </div>
       </section>
     </main>
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-title">
+      <form class="order-form" id="order-form" method="dialog">
+        <button class="dialog-close" id="dialog-close" type="button" aria-label="סגירת החלון">×</button>
+        <p class="order-eyebrow">פרטי הבחירה</p>
+        <h2 id="order-title">מה לרשום על המגנט?</h2>
+        <p class="order-selection" id="order-selection"></p>
+
+        <label class="order-label" for="customer-name">שם המזמין</label>
+        <input id="customer-name" type="text" autocomplete="name" placeholder="הקלידו שם מלא" required />
+
+        <label class="order-label" for="magnet-text">הכיתוב שיופיע על המגנט</label>
+        <textarea id="magnet-text" rows="4" placeholder="לדוגמה: נועה חוגגת בת מצווה" required></textarea>
+
+        <fieldset class="date-options">
+          <legend>תוספת תאריך</legend>
+          <label><input id="hebrew-date" type="checkbox" /> <span>תאריך עברי</span></label>
+          <label><input id="gregorian-date" type="checkbox" /> <span>תאריך לועזי</span></label>
+        </fieldset>
+
+        <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+        <div class="send-options">
+          <button class="send-button whatsapp-button" id="send-whatsapp" type="button">שליחה בוואטסאפ</button>
+          <button class="send-button email-button" id="send-email" type="button">שליחה במייל</button>
+        </div>
+      </form>
+    </dialog>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
